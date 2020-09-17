@@ -1,4 +1,4 @@
-package com.fulan.mykotlin.mykotlinapp.fragment
+package com.bike.mykotlin.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,14 +7,13 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.fulan.mykotlin.mykotlinapp.Constant
-import com.fulan.mykotlin.mykotlinapp.R
-import com.fulan.mykotlin.mykotlinapp.activity.DetailHomeActivity
-import com.fulan.mykotlin.mykotlinapp.adapter.BlogListAdapter
-import com.fulan.mykotlin.mykotlinapp.bean.HomeBean
-import com.fulan.mykotlin.mykotlinapp.network.MRetrofit
-import com.fulan.mykotlin.mykotlinapp.showToast
+import com.bike.mykotlin.Constant
+import com.bike.mykotlin.R
+import com.bike.mykotlin.activity.DetailHomeActivity
+import com.bike.mykotlin.adapter.BlogListAdapter
+import com.bike.mykotlin.bean.HomeBean
+import com.bike.mykotlin.network.MRetrofit
+import com.bike.mykotlin.showToast
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,7 +21,7 @@ import retrofit2.Response
 
 /**
  *
- * @ClassName: com.fulan.mykotlin.mykotlinapp.fragment
+ * @ClassName: com.bike.mykotlin.fragment
  * @Description: 博客模块
  * @author: fjm
  * @date: 2018/8/24 11:17
@@ -42,32 +41,31 @@ class BlogFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        recyclerView.run {
+        with(recyclerView) {
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-
             setHasFixedSize(true)
             adapter = mAdapter
         }
 
-        mAdapter.run {
+        with(mAdapter) {
             bindToRecyclerView(recyclerView)
 
-            setOnItemClickListener({ adapte, view, position ->
-                val intent = Intent()
-                intent.setClass(activity, DetailHomeActivity::class.java)
-                intent.putExtra(Constant.URL_DETAIL, mAdapter.data[position].link)
-                startActivity(intent)
-            })
-            setOnLoadMoreListener(BaseQuickAdapter.RequestLoadMoreListener {
+            setOnItemClickListener { _, _, position ->
+                startActivity(Intent().apply {
+                    setClass(activity, DetailHomeActivity::class.java)
+                    putExtra(Constant.URL_DETAIL, mAdapter.data[position].link)
+                })
+            }
+            setOnLoadMoreListener({
                 mPage++
                 getBlogsData()
             }, recyclerView)
         }
 
-        smartRefreshLayout.setOnRefreshListener({
+        smartRefreshLayout.setOnRefreshListener {
             mPage = 0
             getBlogsData()
-        })
+        }
 
         getBlogsData()
     }
@@ -94,20 +92,14 @@ class BlogFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<HomeBean>, t: Throwable) {
-                if (smartRefreshLayout.isRefreshing) {
-                    smartRefreshLayout.finishRefresh()
-                } else {
-                    mAdapter.loadMoreFail()
-                }
+                smartRefreshLayout?.takeIf { it.isRefreshing }?.finishRefresh()
+                        ?: mAdapter.loadMoreFail()
                 activity.showToast("blog获取失败")
             }
         })
     }
 
     companion object {
-        fun newInstance(): BlogFragment {
-            val fragment = BlogFragment()
-            return fragment
-        }
+        fun newInstance(): BlogFragment = BlogFragment()
     }
 }

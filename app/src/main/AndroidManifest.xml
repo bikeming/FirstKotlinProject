@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.fulan.mykotlin.mykotlinapp">
+          package="com.bike.mykotlin">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -11,7 +11,7 @@
     <!-- 硬件加速对X5视频播放非常重要，建议开启 -->
     <uses-permission android:name="android.permission.GET_TASKS"/>
     <application
-        android:name=".MApp"
+        android:name="com.bike.mykotlin.MApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,14 +20,14 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name=".activity.MainActivity">
+        <activity android:name="com.bike.mykotlin.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.DetailHomeActivity"/>
+        <activity android:name="com.bike.mykotlin.activity.DetailHomeActivity"/>
     </application>
 
 </manifest>

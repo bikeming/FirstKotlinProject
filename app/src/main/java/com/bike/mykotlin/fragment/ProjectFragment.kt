@@ -1,4 +1,4 @@
-package com.fulan.mykotlin.mykotlinapp.fragment
+package com.bike.mykotlin.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,13 +7,13 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.fulan.mykotlin.mykotlinapp.Constant
-import com.fulan.mykotlin.mykotlinapp.R
-import com.fulan.mykotlin.mykotlinapp.activity.DetailHomeActivity
-import com.fulan.mykotlin.mykotlinapp.adapter.ProjectListAdapter
-import com.fulan.mykotlin.mykotlinapp.bean.ProjectBean
-import com.fulan.mykotlin.mykotlinapp.network.MRetrofit
-import com.fulan.mykotlin.mykotlinapp.showToast
+import com.bike.mykotlin.Constant
+import com.bike.mykotlin.R
+import com.bike.mykotlin.activity.DetailHomeActivity
+import com.bike.mykotlin.adapter.ProjectListAdapter
+import com.bike.mykotlin.bean.ProjectBean
+import com.bike.mykotlin.network.MRetrofit
+import com.bike.mykotlin.showToast
 import kotlinx.android.synthetic.main.fragment_project.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,7 +21,7 @@ import retrofit2.Response
 
 /**
  *
- * @ClassName: com.fulan.mykotlin.mykotlinapp.fragment
+ * @ClassName: com.bike.mykotlin.fragment
  * @Description:项目模块
  * @author: fjm
  * @date: 2018/8/22 11:34
@@ -38,25 +38,25 @@ class ProjectFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_project, container, false)
+        return inflater?.inflate(R.layout.fragment_project, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        mRecyclerView.run {
+        with(mRecyclerView) {
             layoutManager = projectLayoutManager
             setHasFixedSize(true)
             adapter = adapter
         }
-        adapter.run {
+        with(adapter) {
             bindToRecyclerView(mRecyclerView)
-            setOnItemClickListener({ adapte, view, position ->
-                val intent = Intent()
-                intent.setClass(activity, DetailHomeActivity::class.java)
-                intent.putExtra(Constant.URL_DETAIL, adapter.data[position].link)
-                startActivity(intent)
-            })
+            setOnItemClickListener { _, _, position ->
+                startActivity(Intent().apply {
+                    setClass(activity, DetailHomeActivity::class.java)
+                    putExtra(Constant.URL_DETAIL, adapter.data[position].link)
+                })
+            }
         }
 
         initData()
@@ -79,10 +79,7 @@ class ProjectFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(): ProjectFragment {
-            val fragment = ProjectFragment()
-            return fragment
-        }
+        fun newInstance(): ProjectFragment = ProjectFragment()
     }
 
 }

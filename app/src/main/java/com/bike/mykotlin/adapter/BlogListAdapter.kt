@@ -1,13 +1,13 @@
-package com.fulan.mykotlin.mykotlinapp.adapter
+package com.bike.mykotlin.adapter
 
+import com.bike.mykotlin.R
+import com.bike.mykotlin.bean.HomeBean
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.fulan.mykotlin.mykotlinapp.R
-import com.fulan.mykotlin.mykotlinapp.bean.HomeBean
 
 /**
  *
- * @ClassName: com.fulan.mykotlin.mykotlinapp.adapter
+ * @ClassName: com.bike.mykotlin.adapter
  * @Description:
  * @author: fjm
  * @date: 2018/8/24 10:05

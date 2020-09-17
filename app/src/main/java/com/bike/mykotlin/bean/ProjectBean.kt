@@ -1,4 +1,4 @@
-package com.fulan.mykotlin.mykotlinapp.bean
+package com.bike.mykotlin.bean
 
 
 data class ProjectBean(

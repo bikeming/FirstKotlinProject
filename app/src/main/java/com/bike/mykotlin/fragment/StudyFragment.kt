@@ -1,4 +1,4 @@
-package com.fulan.mykotlin.mykotlinapp.fragment
+package com.bike.mykotlin.fragment
 
 import android.content.Intent
 import android.net.Uri
@@ -7,12 +7,12 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.fulan.mykotlin.mykotlinapp.R
+import com.bike.mykotlin.R
 import kotlinx.android.synthetic.main.fragment_student.*
 
 /**
  *
- * @ClassName: com.fulan.mykotlin.mykotlinapp.fragment
+ * @ClassName: com.bike.mykotlin.fragment
  * @Description:
  * @author: fjm
  * @date: 2018/8/22 11:33

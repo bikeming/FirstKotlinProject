@@ -1,14 +1,14 @@
-package com.fulan.mykotlin.mykotlinapp.network
+package com.bike.mykotlin.network
 
-import com.fulan.mykotlin.mykotlinapp.bean.HomeBean
-import com.fulan.mykotlin.mykotlinapp.bean.ProjectBean
+import com.bike.mykotlin.bean.HomeBean
+import com.bike.mykotlin.bean.ProjectBean
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 
 /**
  *
- * @ClassName: com.fulan.mykotlin.mykotlinapp
+ * @ClassName: com.bike.mykotlin
  * @Description:
  * @author: fjm
  * @date: 2018/8/22 14:28

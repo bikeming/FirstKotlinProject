@@ -1,15 +1,15 @@
-package com.fulan.mykotlin.mykotlinapp.adapter
+package com.bike.mykotlin.adapter
 
 import android.widget.ImageView
+import com.bike.mykotlin.R
+import com.bike.mykotlin.bean.ProjectBean
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
-import com.fulan.mykotlin.mykotlinapp.R
-import com.fulan.mykotlin.mykotlinapp.bean.ProjectBean
 
 /**
  *
- * @ClassName: com.fulan.mykotlin.mykotlinapp.adapter
+ * @ClassName: com.bike.mykotlin.adapter
  * @Description:
  * @author: fjm
  * @date: 2018/9/11 18:55

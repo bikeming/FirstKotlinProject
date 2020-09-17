@@ -1,4 +1,4 @@
-package com.fulan.mykotlin.mykotlinapp
+package com.bike.mykotlin
 
 import android.app.Application
 import android.util.Log
@@ -7,7 +7,7 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.tencent.smtt.sdk.QbSdk
 
 /**
- * @ClassName: com.fulan.mykotlin.mykotlinapp
+ * @ClassName: com.bike.mykotlin
  * @Description:
  * @author: fjm
  * @date: 2018/9/3 14:23

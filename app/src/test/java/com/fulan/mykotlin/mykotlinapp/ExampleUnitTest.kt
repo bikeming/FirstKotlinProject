@@ -1,4 +1,4 @@
-package com.fulan.mykotlin.mykotlinapp
+package com.bike.mykotlin
 
 import org.junit.Test
 

@@ -1,6 +1,6 @@
-package com.fulan.mykotlin.mykotlinapp.network
+package com.bike.mykotlin.network
 
-import com.fulan.mykotlin.mykotlinapp.Constant
+import com.bike.mykotlin.Constant
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit
 
 /**
  *
- * @ClassName: com.fulan.mykotlin.mykotlinapp
+ * @ClassName: com.bike.mykotlin
  * @Description:
  * @author: fjm
  * @date: 2018/8/29 13:31
@@ -29,7 +29,7 @@ class MRetrofit private constructor() {
     init {
         mRetrofit = Retrofit.Builder()
                 .client(okHttpClient())
-                .baseUrl(Constant.BaseUrl)
+                .baseUrl(Constant.URL_DOMAIN)
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
                 .build()
     }
