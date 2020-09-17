@@ -18,13 +18,10 @@ import kotlinx.android.synthetic.main.layout_detail_home.*
  */
 class DetailHomeActivity : AppCompatActivity(), View.OnClickListener {
 
-     var url: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_detail_home)
-        url = intent?.extras?.getString(Constant.URL_DETAIL)
-
         initView()
     }
 
@@ -44,11 +41,11 @@ class DetailHomeActivity : AppCompatActivity(), View.OnClickListener {
             }
 
         }
-        webview.loadUrl(url)
+        webview.loadUrl(intent?.extras?.getString(Constant.URL_DETAIL))
     }
 
     override fun onClick(v: View?) {
-        when (v!!.id) {
+        when (v?.id) {
             R.id.tv_detail -> finish()
 
         }
